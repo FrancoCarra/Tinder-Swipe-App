@@ -86,11 +86,21 @@ footer{
     }
 }
 
-.cards{
+.cards {
     position: relative;
     width: 100%;
     height: 100%;
     margin: 0 auto;
+
+    & > span{
+        display: grid;
+        place-content: center;
+        color: #777;
+        font-size: 14px;
+        text-align: center;
+        height: 100%;
+        z-index: -1;
+    }
 
     & article{
         cursor: grab;
@@ -103,6 +113,26 @@ footer{
         inset: 0;
         z-index: 2;
         will-change: transform rotate;
+
+        &.go-left{
+            transform: translateX(-150%) rotate(30deg) !important;
+        }
+
+        &.go-right{
+            transform: translateX(-150%) rotate(30deg) !important;
+        }
+
+
+        &.go-left,
+        &.go-right{
+            transition: transform .3s ease, rotate .3s ease;
+        }
+
+        &.reset{
+            transition: transform .3s ease;
+            transform: translateX(0) !important;
+        }
+
 
         & img{
             width: 100%;
